@@ -45,10 +45,12 @@ def mine():
 			start="\t"
 		else:
 			start=""
-		if x%args.entry!=args.entry-1:
-			end=","
-		else:
+		if x==0xff:
 			end="\n"
+		elif x%args.entry==args.entry-1:
+			end=",\n"
+		else:
+			end=","
 		print("%s%*d"%(start, args.width, table[x]), end=end, file=args.output)
 	print("};", file=args.output)
 
